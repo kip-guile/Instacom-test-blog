@@ -4,15 +4,19 @@ import {
   combineReducers,
   getDefaultMiddleware,
 } from '@reduxjs/toolkit'
-import { v1 as uuid } from 'uuid'
+import logger from 'redux-logger'
 
 const initialState = [
   {
     title: 'React Native',
     content: 'Smooth if you know React!',
-    id: uuid(),
+    id: getRandomInt(5000),
   },
 ]
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max))
+}
 
 const blopgPostSlice = createSlice({
   name: 'blogPosts',
@@ -24,7 +28,7 @@ const blopgPostSlice = createSlice({
       },
       prepare: ({ content, title }) => ({
         payload: {
-          id: uuid(),
+          id: getRandomInt(5000),
           content,
           title,
         },
