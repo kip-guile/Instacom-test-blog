@@ -7,8 +7,11 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
+import { Feather } from '@expo/vector-icons'
+import { deletePostActionCreator } from '../store/blogPosts'
 
-const IndexScreen = () => {
+const IndexScreen = ({ navigation }) => {
+  const dispatch = useDispatch()
   const posts = useSelector((state) => state.posts)
   return (
     <View>
@@ -18,15 +21,21 @@ const IndexScreen = () => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-            //   onPress={() => navigation.navigate('Show', { id: item.id })}
+              onPress={() => navigation.navigate('Post', { id: item.id })}
             >
               <View style={styles.row}>
                 <Text style={styles.title}>
                   {item.title} - {item.id}
                 </Text>
-                {/* <TouchableOpacity>
-                  <Feather style={styles.icon} name='trash' />
-                </TouchableOpacity> */}
+                <TouchableOpacity>
+                  <Feather
+                    style={styles.icon}
+                    name='trash'
+                    onPress={() =>
+                      dispatch(deletePostActionCreator({ id: item.id }))
+                    }
+                  />
+                </TouchableOpacity>
               </View>
             </TouchableOpacity>
           )

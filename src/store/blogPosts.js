@@ -51,9 +51,9 @@ const blopgPostSlice = createSlice({
 })
 
 export const {
-  create: createTodoActionCreator,
-  edit: editTodoActionCreator,
-  delete: deleteTodoActionCreator,
+  create: createPostActionCreator,
+  edit: editPostActionCreator,
+  delete: deletePostActionCreator,
 } = blopgPostSlice.actions
 
 const reducer = combineReducers({
