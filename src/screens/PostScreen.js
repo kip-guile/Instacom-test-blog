@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
-import { useSelector, useDispatch } from 'react-redux'
-import { EvilIcons } from '@expo/vector-icons'
+import React from 'react'
+import { Text, View, StyleSheet } from 'react-native'
+import { useSelector } from 'react-redux'
 
-const PostScreen = ({ navigation, route }) => {
+const PostScreen = ({ route }) => {
   const id = route.params.id
   const posts = useSelector((state) => state.posts)
   const blogPost = posts.find((blogPost) => blogPost.id === id)

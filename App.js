@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { Provider } from 'react-redux'
@@ -9,6 +9,7 @@ import { Feather } from '@expo/vector-icons'
 import CreateScreen from './src/screens/CreateScreen'
 import PostScreen from './src/screens/PostScreen'
 import EditScreen from './src/screens/EditScreen'
+import { EvilIcons } from '@expo/vector-icons'
 
 const Stack = createStackNavigator()
 
@@ -45,7 +46,7 @@ export default function App() {
                     })
                   }
                 >
-                  <Feather
+                  <EvilIcons
                     style={{ color: 'red', marginRight: 10 }}
                     size={30}
                     name='pencil'
