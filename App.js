@@ -8,6 +8,7 @@ import store from './src/store/blogPosts'
 import { Feather } from '@expo/vector-icons'
 import CreateScreen from './src/screens/CreateScreen'
 import PostScreen from './src/screens/PostScreen'
+import EditScreen from './src/screens/EditScreen'
 
 const Stack = createStackNavigator()
 
@@ -53,6 +54,7 @@ export default function App() {
               ),
             })}
           />
+          <Stack.Screen name='Edit' component={EditScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

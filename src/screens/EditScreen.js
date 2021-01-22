@@ -1,22 +1,21 @@
 import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
-import BlogPostForm from '../components/BlogPostForm'
-import { useDispatch } from 'react-redux'
+import Form from '../components/Form'
+import { useDispatch, useSelector } from 'react-redux'
+import { editPostActionCreator } from '../store/blogPosts'
 
 const EditScreen = ({ navigation, route }) => {
   const dispatch = useDispatch()
-  const id = nroute.params.id
+  const id = route.params.id
   const posts = useSelector((state) => state.posts)
-  //   const { state, editBlogPost } = useContext(Context)
   const blogPost = posts.find((blogPost) => blogPost.id === id)
 
   return (
-    <BlogPostForm
-      onSubmit={(title, content) =>
-        dispatch(
-          editPostActionCreator(id, title, content, () => navigation.pop())
-        )
-      }
+    <Form
+      onSubmit={(title, content) => {
+        dispatch(editPostActionCreator({ id, title, content }))
+        navigation.pop()
+      }}
       initialValues={{ title: blogPost.title, content: blogPost.content }}
     />
   )
